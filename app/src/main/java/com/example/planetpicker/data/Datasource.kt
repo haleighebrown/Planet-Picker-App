@@ -10,14 +10,14 @@ class Datasource {
         val Planet = mutableListOf<Planet>()
 
         val planets = listOf(
-            Planet(R.string.mercury, R.drawable.mercury, false, false, false, false, false),
-            Planet(R.string.venus, R.drawable.venus, false, false, false, false, false),
-            Planet(R.string.earth, R.drawable.earth, false, false, false, false, false),
-            Planet(R.string.mars, R.drawable.mars, false, false, false, false, false),
-            Planet(R.string.jupiter, R.drawable.jupiter, false, false, false, false, false),
-            Planet(R.string.saturn, R.drawable.saturn, false, false, false, false, false),
-            Planet(R.string.uranus, R.drawable.uranus, false, false, false, false, false),
-            Planet(R.string.neptune, R.drawable.neptune, false, false, false, false, false)
+            Planet(R.string.mercury, R.drawable.mercury, false, false, true, false, false),
+            Planet(R.string.venus, R.drawable.venus, false, false, true, false, false),
+            Planet(R.string.earth, R.drawable.earth, false, false, true, false, true),
+            Planet(R.string.mars, R.drawable.mars, true, false, true, true, true),
+            Planet(R.string.jupiter, R.drawable.jupiter, true, true, false, true, true),
+            Planet(R.string.saturn, R.drawable.saturn, true, true, false, true, true),
+            Planet(R.string.uranus, R.drawable.uranus, true, false, true, true, true),
+            Planet(R.string.neptune, R.drawable.neptune, true, true, true, true, true)
         )
 
         for (plan in planets) {
@@ -27,6 +27,7 @@ class Datasource {
 
 
         }
+
 
 
         return Planet

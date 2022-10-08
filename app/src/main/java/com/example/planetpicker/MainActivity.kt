@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val  cold = binding.coldSwitch.isChecked
-        val gravity = binding.gravitySwitch.isChecked
-        val  rocky = binding.rockySwitch.isChecked
-        val  rings = binding.ringSwitch.isChecked
-        val  moons = binding.moonSwitch.isChecked
 
 
-        binding.submitButton.setOnClickListener {
+        binding.submitButton.setOnClickListener  {
+            val  cold = binding.coldSwitch.isChecked
+            val gravity = binding.gravitySwitch.isChecked
+            val  rocky = binding.rockySwitch.isChecked
+            val  rings = binding.ringSwitch.isChecked
+            val  moons = binding.moonSwitch.isChecked
             val myDataset = Datasource().loadPlanet(cold, gravity, rocky, rings, moons)
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
             recyclerView.adapter = ItemAdapter(this, myDataset)

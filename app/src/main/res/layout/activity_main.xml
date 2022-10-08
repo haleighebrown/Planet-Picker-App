@@ -20,10 +20,9 @@
 
     <Switch
         android:id="@+id/cold_switch"
-
+        android:checked = "false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="Extremely Cold?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/question"
@@ -31,9 +30,9 @@
 
     <Switch
         android:id="@+id/gravity_switch"
+        android:checked = "false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="High Gravity?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/cold_switch"
@@ -41,10 +40,9 @@
 
     <Switch
         android:id="@+id/rocky_switch"
-
+        android:checked = "false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="Rocky Planet?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/gravity_switch"
@@ -52,10 +50,9 @@
 
     <Switch
         android:id="@+id/ring_switch"
-
+        android:checked = "false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="Has Rings?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/rocky_switch"
@@ -63,10 +60,9 @@
 
     <Switch
         android:id="@+id/moon_switch"
-
+        android:checked = "false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:checked="true"
         android:text="Has Moons?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/ring_switch"
@@ -87,10 +83,9 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/submit_button"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="@id/submit_button"
+        app:layout_constraintTop_toBottomOf="@+id/submit_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
