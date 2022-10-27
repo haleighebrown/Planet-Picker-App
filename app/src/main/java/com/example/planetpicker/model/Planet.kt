@@ -1,11 +1,12 @@
 package com.example.planetpicker.model
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-
-data class Planet(@StringRes val stringResourceId: Int, @DrawableRes val imageResourceId: Int, @BooleanRes val cold: Boolean,
-                  @BooleanRes val gravity: Boolean, @BooleanRes val rocky: Boolean, @BooleanRes val rings: Boolean, @BooleanRes val moon: Boolean,) {
+data class Planet(val stringResourceId: String,
+                  val imageResourceId: Int,
+                  val cold: Boolean,
+                  val gravity: Boolean,
+                  val rocky: Boolean,
+                  val rings: Boolean,
+                  val moon: Boolean,
+                  val details: String){
 
 }
-
-annotation class BooleanRes

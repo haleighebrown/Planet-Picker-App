@@ -1,46 +1,26 @@
 package com.example.planetpicker
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import com.example.planetpicker.adapter.ItemAdapter
-import com.example.planetpicker.data.Datasource
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.planetpicker.databinding.ActivityMainBinding
 
-private var submitButton: TextView? = null
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
+    private lateinit var navController: NavController
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
 
-
-        binding.submitButton.setOnClickListener  {
-            val  cold = binding.coldSwitch.isChecked
-            val gravity = binding.gravitySwitch.isChecked
-            val  rocky = binding.rockySwitch.isChecked
-            val  rings = binding.ringSwitch.isChecked
-            val  moons = binding.moonSwitch.isChecked
-            val myDataset = Datasource().loadPlanet(cold, gravity, rocky, rings, moons)
-            val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-            recyclerView.adapter = ItemAdapter(this, myDataset)
-            recyclerView.setHasFixedSize(true)
-        }
-
-
-
-
-
-
+        setupActionBarWithNavController(navController)
     }
 
-
-
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }

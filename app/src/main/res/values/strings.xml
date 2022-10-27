@@ -8,4 +8,5 @@
     <string name="saturn">Saturn</string>
     <string name="uranus">Uranus</string>
     <string name="neptune">Neptune</string>
+    <string name="choices">Current Answers:</string>
 </resources>
