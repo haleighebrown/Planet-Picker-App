@@ -3,10 +3,10 @@ package com.example.planetpicker.data
 import com.example.planetpicker.R
 import com.example.planetpicker.model.Planet
 
-object DataSource {
-    val planets = mapOf(
-        "Mercury" to
-                Planet(
+object PlanetsData{
+    fun getPlanetsData(): ArrayList<Planet> {
+        return arrayListOf(
+            Planet(
                     stringResourceId = "Mercury",
                     imageResourceId = R.drawable.mercury,
                     cold = false,
@@ -16,8 +16,7 @@ object DataSource {
                     moon = false,
                     details = "It's a planet!"
                 ),
-        "Venus" to
-                Planet(
+            Planet(
                     stringResourceId = "Venus",
                     imageResourceId = R.drawable.venus,
                     cold = false,
@@ -27,8 +26,7 @@ object DataSource {
                     moon = false,
                     details = "It's a planet!"
                 ),
-        "Earth" to
-                Planet(
+            Planet(
                     stringResourceId = "Earth",
                     imageResourceId = R.drawable.earth,
                     cold = false,
@@ -38,8 +36,7 @@ object DataSource {
                     moon = true,
                     details = "It's a planet!"
                 ),
-        "Mars" to
-                Planet(
+            Planet(
                     stringResourceId = "Mars",
                     imageResourceId = R.drawable.mars,
                     cold = true,
@@ -49,8 +46,7 @@ object DataSource {
                     moon = true,
                     details = "It's a planet!"
                 ),
-        "Jupiter" to
-                Planet(
+            Planet(
                     stringResourceId = "Jupiter",
                     imageResourceId = R.drawable.jupiter,
                     cold = true,
@@ -60,8 +56,7 @@ object DataSource {
                     moon = true,
                     details = "It's a planet!"
                 ),
-        "Saturn" to
-                Planet(
+            Planet(
                     stringResourceId = "Saturn",
                     imageResourceId = R.drawable.saturn,
                     cold = true,
@@ -71,8 +66,7 @@ object DataSource {
                     moon = true,
                     details = "It's a planet!"
                 ),
-        "Uranus" to
-                Planet(
+            Planet(
                     stringResourceId = "Uranus",
                     imageResourceId = R.drawable.uranus,
                     cold = true,
@@ -82,8 +76,7 @@ object DataSource {
                     moon = true,
                     details = "It's a planet!"
                 ),
-        "Neptune" to
-                Planet(
+            Planet(
                     stringResourceId = "Neptune",
                     imageResourceId = R.drawable.neptune,
                     cold = true,
@@ -94,5 +87,5 @@ object DataSource {
                     details = "It's a planet!"
                 )
     )
-}
+}}
 
