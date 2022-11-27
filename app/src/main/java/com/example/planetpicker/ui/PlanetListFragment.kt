@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
+import com.example.planetpicker.PlanetPickerApplication
 import com.example.planetpicker.R
 import com.example.planetpicker.databinding.FragmentPlanetListBinding
-
+//import com.example.planetpicker.model.PlanetViewModelFactory
 
 
 class PlanetListFragment : Fragment() {
@@ -41,7 +42,13 @@ class PlanetListFragment : Fragment() {
         }
     }
 
-    private val sharedViewModel: PlanetViewModel by activityViewModels()
+    private val viewModel: PlanetViewModel by activityViewModels()
+    /*{
+        PlanetViewModelFactory(
+            (activity?.application as PlanetPickerApplication).database.planetDao()
+        )
+    }
+     */
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +63,7 @@ class PlanetListFragment : Fragment() {
         val slidingPaneLayout = binding.slidingPaneLayout
         // Initialize the adapter and set it to the RecyclerView.
         val adapter = ItemAdapter {
-            sharedViewModel.updateCurrentPlanet(it)
+            viewModel.updateCurrentPlanet(it)
             // Navigate to the details screen
             binding.slidingPaneLayout.openPane()
         }
@@ -66,6 +73,6 @@ class PlanetListFragment : Fragment() {
         )
         slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED
         binding.recyclerView.adapter = adapter
-        adapter.submitList(sharedViewModel.planetsData)
+        adapter.submitList(viewModel.planetsData)
     }
 }

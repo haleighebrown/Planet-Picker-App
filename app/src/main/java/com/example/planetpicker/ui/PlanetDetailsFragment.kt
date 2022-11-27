@@ -7,11 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import coil.load
+import com.example.planetpicker.PlanetPickerApplication
 import com.example.planetpicker.databinding.FragmentPlanetDetailsBinding
 
 
+
 class PlanetDetailsFragment : Fragment() {
-    private val sharedViewModel: PlanetViewModel by activityViewModels()
+    private val viewModel: PlanetViewModel by activityViewModels()
+    /*{
+        PlanetViewModelFactory(
+            (activity?.application as PlanetPickerApplication).database.planetDao()
+        )
+    }
+     */
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +33,9 @@ class PlanetDetailsFragment : Fragment() {
         val binding = FragmentPlanetDetailsBinding.bind(view)
 
 
-        sharedViewModel.currentPlanet.observe(this.viewLifecycleOwner) {
+        viewModel.currentPlanet.observe(this.viewLifecycleOwner) {
             binding.titleDetail.text = it.stringResourceId
+            binding.TitleDetail.text = it.stringResourceId
             binding.planetsImageDetail.load(it.imageResourceId)
             binding.planetDetail.text = it.details
         }

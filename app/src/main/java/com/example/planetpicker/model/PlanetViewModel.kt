@@ -1,36 +1,73 @@
 package com.example.planetpicker.model
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.planetpicker.data.PlanetsData
-import com.example.planetpicker.model.Planet
 
-class PlanetViewModel: ViewModel(){
+import androidx.lifecycle.*
+import com.example.planetpicker.PlanetPickerApplication
+import com.example.planetpicker.data.PlanetDao
+import com.example.planetpicker.model.Planet
+import com.example.planetpicker.data.PlanetsData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
+import androidx.lifecycle.LiveData as LiveData
+
+//class PlanetViewModel(private val planetDao: PlanetDao): ViewModel() {
+
+class PlanetViewModel: ViewModel() {
+    /*
+    var allFavPlanets: LiveData<List<Planet>> = planetDao.getPlanets().asLiveData()
+    fun planetFavId(id: Long): LiveData<Planet> {
+        return planetDao.getPlanet(id).asLiveData()
+    }
+    fun addFavPlanet(
+        stringResourceId: String,
+        imageResourceId: Int,
+        cold: Boolean,
+        gravity: Boolean,
+        rocky: Boolean,
+        rings: Boolean,
+        moon: Boolean,
+        details: String
+    ) {
+        val planet = Planet(
+            stringResourceId = stringResourceId,
+            imageResourceId = imageResourceId,
+            cold = cold,
+            gravity = gravity,
+            rocky = rocky,
+            rings = rings,
+            moon = moon,
+            details = details
+        )
+        viewModelScope.launch(Dispatchers.IO) {
+            planetDao.insert(planet)
+        }
+
+    }
+
+    fun deleteFavPlanet(planet: Planet) {
+        viewModelScope.launch(Dispatchers.IO) {
+            planetDao.delete(planet)
+        }
+    }
+
+
+     */
     private var _planetsData: ArrayList<Planet> = ArrayList()
     val planetsData: ArrayList<Planet>
         get() = _planetsData
-
     private val _cold = MutableLiveData<String>()
     val cold: LiveData<String> = _cold
-
     private val _gravity = MutableLiveData<String>()
     val gravity: LiveData<String> = _gravity
-
     private val _rocky = MutableLiveData<String>()
     val rocky: LiveData<String> = _rocky
-
     private val _rings = MutableLiveData<String>()
     val rings: LiveData<String> = _rings
-
     private val _moon = MutableLiveData<String>()
     val moon: LiveData<String> = _moon
-
     private var _currentPlanet: MutableLiveData<Planet> = MutableLiveData<Planet>()
     val currentPlanet: LiveData<Planet>
         get() = _currentPlanet
-    private var _planetData: ArrayList<Planet> = ArrayList()
-    val planetData: ArrayList<Planet>
-        get() = _planetData
 
     init {
         _planetsData = PlanetsData.getPlanetsData()
@@ -48,7 +85,7 @@ class PlanetViewModel: ViewModel(){
     fun setGravity() {
         if (_gravity.value == "Yes") {
         _gravity.value = "No"
-    }else {_gravity.value = "Yes"}
+        }else {_gravity.value = "Yes"}
     }
     fun setRocky() {
         if (_rocky.value == "Yes") {
@@ -75,12 +112,14 @@ class PlanetViewModel: ViewModel(){
         _moon.value = "No"
     }
 }
-
-
 /*
-
-    for (plan in planets) {
-        if (plan.cold == cold && plan.gravity == gravity && plan.rocky == rocky && plan.rings == rings && plan.moon == moons) {
-            Planet += plan
+class PlanetViewModelFactory(private val planetDao: PlanetDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(PlanetViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return PlanetViewModel(planetDao) as T
         }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
 */
