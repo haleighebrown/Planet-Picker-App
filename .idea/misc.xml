@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_fav_planet_list.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_planet_details.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_planet_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_planet_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.1" />

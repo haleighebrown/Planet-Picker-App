@@ -1,5 +1,6 @@
 package com.example.planetpicker.model
 
+import android.content.ClipData
 import androidx.lifecycle.*
 import com.example.planetpicker.PlanetPickerApplication
 import com.example.planetpicker.data.PlanetDao
@@ -13,29 +14,13 @@ import androidx.lifecycle.LiveData as LiveData
 class PlanetViewModel(private val planetDao: PlanetDao): ViewModel() {
 
     var allFavPlanets: LiveData<List<Planet>> = planetDao.getPlanets().asLiveData()
-    fun planetFavId(id: Long): LiveData<Planet> {
+
+    fun retrieveItem(id: Int): LiveData<Planet> {
         return planetDao.getPlanet(id).asLiveData()
     }
-    fun addFavPlanet(
-        stringResourceId: String,
-        imageResourceId: Int,
-        cold: Boolean,
-        gravity: Boolean,
-        rocky: Boolean,
-        rings: Boolean,
-        moon: Boolean,
-        details: String
+
+    fun addFavPlanet(planet: Planet
     ) {
-        val planet = Planet(
-            stringResourceId = stringResourceId,
-            imageResourceId = imageResourceId,
-            cold = cold,
-            gravity = gravity,
-            rocky = rocky,
-            rings = rings,
-            moon = moon,
-            details = details
-        )
         viewModelScope.launch(Dispatchers.IO) {
             planetDao.insert(planet)
         }

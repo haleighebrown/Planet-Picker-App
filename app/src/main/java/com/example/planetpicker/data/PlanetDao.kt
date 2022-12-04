@@ -10,7 +10,7 @@ interface PlanetDao {
     fun getPlanets(): Flow<List<Planet>>
 
     @Query("SELECT * FROM planet_database WHERE id = :id")
-    fun getPlanet(id: Long): Flow<Planet>
+    fun getPlanet(id: Int): Flow<Planet>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(planet: Planet)
