@@ -10,10 +10,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import androidx.lifecycle.LiveData as LiveData
 
-//class PlanetViewModel(private val planetDao: PlanetDao): ViewModel() {
+class PlanetViewModel(private val planetDao: PlanetDao): ViewModel() {
 
-class PlanetViewModel: ViewModel() {
-    /*
     var allFavPlanets: LiveData<List<Planet>> = planetDao.getPlanets().asLiveData()
     fun planetFavId(id: Long): LiveData<Planet> {
         return planetDao.getPlanet(id).asLiveData()
@@ -50,8 +48,6 @@ class PlanetViewModel: ViewModel() {
         }
     }
 
-
-     */
     private var _planetsData: ArrayList<Planet> = ArrayList()
     val planetsData: ArrayList<Planet>
         get() = _planetsData
@@ -111,15 +107,20 @@ class PlanetViewModel: ViewModel() {
         _rings.value = "No"
         _moon.value = "No"
     }
-}
-/*
-class PlanetViewModelFactory(private val planetDao: PlanetDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PlanetViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return PlanetViewModel(planetDao) as T
+
+    class PlanetViewModelFactory(private val planetDao: PlanetDao) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(PlanetViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return PlanetViewModel(planetDao) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-*/
+
+
+
+
+
+

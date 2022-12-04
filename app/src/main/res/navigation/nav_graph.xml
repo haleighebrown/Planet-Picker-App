@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_startFragment_to_planetListFragment"
             app:destination="@id/PlanetListFragment" />
+        <action
+            android:id="@+id/action_StartFragment_to_planetFavListFragment"
+            app:destination="@id/planetFavListFragment" />
     </fragment>
     <fragment
         android:id="@+id/PlanetDetailsFragment"
@@ -31,6 +34,17 @@
             app:destination="@id/PlanetDetailsFragment" />
         <action
             android:id="@+id/action_planetListFragment_to_startFragment"
+            app:destination="@id/StartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/planetFavListFragment"
+        android:name="com.example.planetpicker.ui.PlanetFavListFragment"
+        android:label="PlanetFavListFragment" >
+        <action
+            android:id="@+id/action_planetFavListFragment_to_PlanetDetailsFragment"
+            app:destination="@id/PlanetDetailsFragment" />
+        <action
+            android:id="@+id/action_planetFavListFragment_to_StartFragment"
             app:destination="@id/StartFragment" />
     </fragment>
 </navigation>

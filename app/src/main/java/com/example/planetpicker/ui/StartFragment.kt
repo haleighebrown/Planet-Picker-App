@@ -11,6 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.planetpicker.PlanetPickerApplication
 import com.example.planetpicker.R
 import com.example.planetpicker.databinding.FragmentStartBinding
+
+
+
 //import com.example.planetpicker.model.PlanetViewModelFactory
 
 
@@ -19,12 +22,11 @@ class StartFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val sharedViewModel: PlanetViewModel by activityViewModels()
-    /*{
-        PlanetViewModelFactory(
+    {
+        PlanetViewModel.PlanetViewModelFactory(
             (activity?.application as PlanetPickerApplication).database.planetDao()
         )
     }
-     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,11 @@ class StartFragment : Fragment() {
 
     fun goToNextScreen() {
         findNavController().navigate(R.id.action_startFragment_to_planetListFragment)
+    }
+
+    fun goToFavScreen() {
+        findNavController().navigate(R.id.action_StartFragment_to_planetFavListFragment)
+
     }
 
     override fun onDestroyView() {

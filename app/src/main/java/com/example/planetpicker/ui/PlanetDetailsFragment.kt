@@ -13,13 +13,12 @@ import com.example.planetpicker.databinding.FragmentPlanetDetailsBinding
 
 
 class PlanetDetailsFragment : Fragment() {
-    private val viewModel: PlanetViewModel by activityViewModels()
-    /*{
-        PlanetViewModelFactory(
+    private val sharedViewModel: PlanetViewModel by activityViewModels()
+    {
+        PlanetViewModel.PlanetViewModelFactory(
             (activity?.application as PlanetPickerApplication).database.planetDao()
         )
     }
-     */
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +32,7 @@ class PlanetDetailsFragment : Fragment() {
         val binding = FragmentPlanetDetailsBinding.bind(view)
 
 
-        viewModel.currentPlanet.observe(this.viewLifecycleOwner) {
+        sharedViewModel.currentPlanet.observe(this.viewLifecycleOwner) {
             binding.titleDetail.text = it.stringResourceId
             binding.TitleDetail.text = it.stringResourceId
             binding.planetsImageDetail.load(it.imageResourceId)
