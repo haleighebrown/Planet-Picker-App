@@ -25,7 +25,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            tools:ignore="ExtraText">
 
             <CheckBox
                     android:id="@+id/coldOption"
@@ -126,65 +126,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view2" />
 
-            <TextView
-                android:id="@+id/choices"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider"
-                android:text='@{@string/choices}'
-                tools:text="Choices:"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/cold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choices"
-                android:text='@{viewModel.cold}'
-                tools:text="no"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/gravity"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cold"
-                android:text='@{viewModel.gravity}'
-                tools:text="no"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/rocky"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gravity"
-                android:text='@{viewModel.rocky}'
-                tools:text="no"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/rings"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rocky"
-                android:text='@{viewModel.rings}'
-                tools:text="no"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/moon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rings"
-                android:text='@{viewModel.moon}'
-                tools:text="no"
-                android:layout_height="20dp"
-                android:layout_width="match_parent"/>
 
             <Button
                 android:id="@+id/next_button"
                 android:onClick="@{() -> StartFragment.goToNextScreen()}"
                 android:text="SEARCH"
-                app:layout_constraintTop_toBottomOf="@id/moon"
+                app:layout_constraintTop_toBottomOf="@id/moonOption"
                 tools:text="search"
                 android:layout_height="75dp"
                 android:layout_width="match_parent"/>

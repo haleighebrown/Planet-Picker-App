@@ -12,12 +12,15 @@ import coil.load
 import com.example.planetpicker.PlanetPickerApplication
 import com.example.planetpicker.R
 import com.example.planetpicker.databinding.FragmentPlanetDetailsBinding
+import com.example.planetpicker.databinding.FragmentStartBinding
 import com.example.planetpicker.model.Planet
 import com.example.planetpicker.model.PlanetViewModel
 
-
+//THIS NEEDS E CHANGED BACK I NEED TO FIX THE BUTTENS THEN I NEED TO DO EVERYTHING OFF OF DATABASE
 
 class PlanetDetailsFragment : Fragment() {
+    private var _binding: FragmentPlanetDetailsBinding? = null
+    private val binding get() = _binding!!
 
     private val sharedViewModel: PlanetViewModel by activityViewModels()
     {
@@ -33,13 +36,20 @@ class PlanetDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return FragmentPlanetDetailsBinding.inflate(inflater, container, false).root
+        _binding = FragmentPlanetDetailsBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentPlanetDetailsBinding.bind(view)
 
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            sharedViewModel = sharedViewModel
+            planetDetailsFragment = this@PlanetDetailsFragment
+        }
 
         sharedViewModel.currentPlanet.observe(this.viewLifecycleOwner) {
             planet = it
@@ -50,12 +60,14 @@ class PlanetDetailsFragment : Fragment() {
         }
     }
     fun goToSearchScreen() {
-        findNavController().navigate(R.id.action_planetDetailsFragment_to_startFragment)
+        sharedViewModel.toViewSearch()
+        findNavController().navigate(R.id.action_planetListFragment_to_startFragment)
     }
 
     fun goToFavScreen() {
         sharedViewModel.addFavPlanet(planet)
-        findNavController().navigate(R.id.action_PlanetDetailsFragment_to_planetFavListFragment)
+        sharedViewModel.toViewFav()
+        findNavController().navigate(R.id.action_planetListFragment_to_startFragment)
     }
 
 }

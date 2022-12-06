@@ -51,11 +51,13 @@ class StartFragment : Fragment() {
     }
 
     fun goToNextScreen() {
+        sharedViewModel.toViewSearch()
         findNavController().navigate(R.id.action_startFragment_to_planetListFragment)
     }
 
     fun goToFavScreen() {
-        findNavController().navigate(R.id.action_StartFragment_to_planetFavListFragment)
+        sharedViewModel.toViewFav()
+        findNavController().navigate(R.id.action_startFragment_to_planetListFragment)
 
     }
 

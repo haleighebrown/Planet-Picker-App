@@ -60,4 +60,6 @@ class ItemAdapter(private val onItemClicked: (Planet) -> Unit) :
             }
         }
     }
+
+
 }

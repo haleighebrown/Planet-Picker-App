@@ -22,6 +22,8 @@ data class Planet(
     val rings: Boolean,
     @ColumnInfo(name = "moon")
     val moon: Boolean,
+    @ColumnInfo(name = "fav")
+    val fav: Boolean,
     @ColumnInfo(name = "details")
     val details: String){
 

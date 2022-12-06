@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_planetListFragment_to_startFragment"
             app:destination="@id/StartFragment" />
+        <action
+            android:id="@+id/action_PlanetListFragment_to_planetFavListFragment"
+            app:destination="@id/planetFavListFragment" />
     </fragment>
     <fragment
         android:id="@+id/planetFavListFragment"

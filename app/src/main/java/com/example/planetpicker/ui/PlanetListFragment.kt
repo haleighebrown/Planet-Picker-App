@@ -71,6 +71,6 @@ class PlanetListFragment : Fragment() {
         )
         slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED
         binding.recyclerView.adapter = adapter
-        adapter.submitList(sharedViewModel.planetsData)
+        adapter.submitList(sharedViewModel.listToView)
     }
 }
